@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Links Corporate PLC - Strategic Brokerage & Logistics</title>
+    <!-- Google Analytics (GA4) Global Site Tag (gtag.js) Placeholder -->
+    <!-- REPLACE [YOUR_GA4_MEASUREMENT_ID] WITH YOUR ACTUAL ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=[YOUR_GA4_MEASUREMENT_ID]"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '[YOUR_GA4_MEASUREMENT_ID]');
+    </script>
+    <!-- End GA4 Placeholder -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Load Phosphor Icons for professional icons -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <style>
+        /* Define the Corporate Colors */
+        .corporate-blue { color: #0A3D62; }
+        .bg-corporate-blue { background-color: #0A3D62; }
+        .gold-trim { stroke: #FFD700; stroke-width: 4; }
+        .bg-gold-light { background-color: #FFF8E1; } /* Light background for highlights */
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #1f2937;
+        }
+        .header-bg {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(10, 61, 98, 0.1), 0 4px 6px -2px rgba(10, 61, 98, 0.05);
+        }
+        /* New Logo SVG Styling */
+        .symbol-blue { fill: #0A3D62; }
+        .symbol-gold { fill: #FFD700; }
+
+        /* Chatbot Styles (Retained and adjusted for visibility) */
+        #chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000; /* High z-index for visibility */
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        #chat-button:hover {
+            transform: scale(1.05);
+        }
+        #chat-container {
+            position: fixed;
+            bottom: 95px;
+            right: 20px;
+            width: 90vw;
+            max-width: 400px;
+            height: 70vh;
+            max-height: 550px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+            border: 2px solid #0A3D62;
+        }
+        @media (min-width: 768px) {
+            #chat-container {
+                width: 380px;
+            }
+        }
+        .chat-header {
+            background-color: #0A3D62;
+            color: white;
+        }
+        .chat-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: #f0f4f8;
+        }
+        .message-user {
+            background-color: #FFD700;
+            color: #0A3D62;
+            align-self: flex-end;
+            max-width: 85%;
+        }
+        .message-ai {
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            color: #1f2937;
+            max-width: 85%;
+        }
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #FFD700;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+        .source-link {
+            font-size: 0.75rem;
+            color: #1c508a;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        /* Custom Alert/Message Box */
+        #status-message-box {
+            position: fixed;
+            top: 4rem;
+            right: 1rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            z-index: 1001;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal Styles for AI Toolkit Output */
+        #ai-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 20000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #ai-modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Scrolling Marquee for Logos */
+        .logo-scroll-container {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background: #fdfdfd;
+            border-top: 1px solid #eee;
+        }
+        .logo-scroll-content {
+            display: inline-block;
+            animation: scroll-logos 30s linear infinite;
+        }
+        .logo-scroll-content img {
+            height: 40px; 
+            margin: 0 2rem;
+            display: inline-block;
+            filter: grayscale(100%);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .logo-scroll-content img:hover {
+             opacity: 0.8;
+             filter: grayscale(0%);
+        }
+        @keyframes scroll-logos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Modal for AI Toolkit Output -->
+    <div id="ai-modal-overlay" onclick="closeModal()">
+        <div id="ai-modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start border-b pb-3 mb-4">
+                <h3 id="modal-title" class="text-xl font-bold corporate-blue">AI Toolkit Result</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-900 transition">
+                    <i class="ph-x-bold text-2xl"></i>
+                </button>
+            </div>
+            <div id="modal-body" class="text-gray-700 text-sm">
+                <!-- AI generated content and sources go here -->
+            </div>
+            <div id="modal-loading" class="text-center py-4 hidden">
+                <span class="loading-dot bg-corporate-blue"></span>
+                <span class="loading-dot bg-corporate-blue"></span>
+                <span class="loading-dot bg-corporate-blue"></span>
+                <p class="text-sm text-gray-500 mt-2">Processing...</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Navigation Header -->
+    <header class="header-bg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Logo Area -->
+            <div class="flex items-center space-x-2">
+                <a href="#home" class="flex items-center space-x-2">
+                    <svg id="plc-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10">
+                        <!-- New Logo: Interlocking Prime Links -->
+                        <path class="symbol-blue" d="M 50 10 L 80 50 L 50 90 L 20 50 Z" transform="scale(0.8) translate(10, 10)" />
+                        <path class="symbol-gold" d="M 50 20 L 70 50 L 50 80 L 30 50 Z" transform="scale(0.8) translate(10, 10)" />
+                        <path class="symbol-blue" d="M 50 35 L 65 50 L 50 65 L 35 50 Z" transform="scale(0.8) translate(10, 10)" />
+                        <!-- Two central linked chevrons for the "Link" effect -->
+                        <path class="symbol-gold" d="M 30 45 L 50 65 L 70 45 L 50 25 Z" fill="#FFD700" opacity="0.9" />
+                        <path class="symbol-blue" d="M 35 55 L 55 75 L 75 55 L 55 35 Z" fill="#0A3D62" opacity="0.9" transform="translate(-10, -5)" />
+                    </svg>
+                    <span class="text-xl font-black corporate-blue">Prime Links Corporate</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#record" class="corporate-blue hover:text-gray-600 transition">Track Record</a>
+                <a href="#toolkit" class="corporate-blue hover:text-gray-600 transition">AI Toolkit</a>
+                <a href="#services" class="corporate-blue hover:text-gray-600 transition">Our Services</a>
+                <a href="#process" class="corporate-blue hover:text-gray-600 transition">The PLC Standard</a>
+                <a href="#contact" class="corporate-blue hover:text-gray-600 transition">Contact Us</a>
+            </nav>
+            
+            <!-- Mobile Menu Button (Placeholder) -->
+            <button class="md:hidden text-2xl corporate-blue">
+                <i class="ph-list-bold"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section (Includes the Download Button) -->
+    <section id="home" class="py-20 md:py-32 text-center bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Download Button (Owner Access Only - Controlled by JavaScript Check) -->
+            <button id="download-logo-btn" onclick="downloadLogo()" class="mb-6 px-4 py-2 text-sm bg-corporate-blue text-white font-medium rounded-lg hover:bg-amber-600 transition duration-300 flex items-center justify-center mx-auto" style="display: none;">
+                <i class="ph-download-simple-bold text-lg mr-2 text-amber-500"></i>
+                Download Official PLC Logo (SVG)
+            </button>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold corporate-blue leading-tight mb-4">
+                <span class="text-amber-500">Connecting Africa</span> to Prime Business Opportunities
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                **Prime Links Corporate PLC** is your strategic intermediary, mastering transparent and efficient automotive logistics today while building the foundation for tomorrow’s commercial real estate brokerage.
+            </p>
+            <a href="#toolkit" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-corporate-blue hover:bg-opacity-90 transition duration-300 shadow-lg">
+                Explore the PLC AI Toolkit
+                <i class="ph-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Client Logos Scrolling Marquee -->
+    <div class="logo-scroll-container">
+        <div class="logo-scroll-content">
+            <!-- Logos for aspirational partnerships. Image URLs are mock placeholders. -->
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Global+Auto+Group" alt="Global Auto Group" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Accra+Logistics+Ptnrs" alt="Accra Logistics Ptnrs" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Kumasi+Industrials" alt="Kumasi Industrials" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=China+Sourcing+Hub" alt="China Sourcing Hub" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=West+Africa+Property+Fund" alt="West Africa Property Fund" class="h-10 mx-8">
+
+            <!-- Duplicate logos for seamless scrolling effect -->
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Global+Auto+Group" alt="Global Auto Group" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Accra+Logistics+Ptnrs" alt="Accra Logistics Ptnrs" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Kumasi+Industrials" alt="Kumasi Industrials" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=China+Sourcing+Hub" alt="China Sourcing Hub" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=West+Africa+Property+Fund" alt="West Africa Property Fund" class="h-10 mx-8">
+        </div>
+    </div>
+    
+    <!-- 1.6. New Track Record Section -->
+    <section id="record" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Our Vetted Track Record & Credibility</h2>
+            
+            <!-- Statistics Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-center">
+                
+                <div class="p-4 rounded-xl border border-gray-200">
+                    <p class="text-4xl font-extrabold text-amber-500">10+</p>
+                    <p class="text-gray-600 font-medium mt-1">Years of Operation</p>
+                </div>
+                <div class="p-4 rounded-xl border border-gray-200">
+                    <p class="text-4xl font-extrabold corporate-blue">250+</p>
+                    <p class="text-gray-600 font-medium mt-1">Total Deals Closed</p>
+                </div>
+                <div class="p-4 rounded-xl border border-gray-200">
+                    <p class="text-4xl font-extrabold text-amber-500">500+</p>
+                    <p class="text-gray-600 font-medium mt-1">Customers Served</p>
+                </div>
+                <div class="p-4 rounded-xl border border-gray-200">
+                    <p class="text-4xl font-extrabold corporate-blue">4.8/5</p>
+                    <p class="text-gray-600 font-medium mt-1">Average Client Rating</p>
+                </div>
+            </div>
+
+            <!-- Portfolio Breakdown -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue">
+                    <h4 class="text-xl font-bold corporate-blue mb-2">Automotive Deals</h4>
+                    <p class="text-3xl font-extrabold text-amber-500">225</p>
+                    <p class="text-sm text-gray-600">Successful sales and service logistics closed.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue">
+                    <h4 class="text-xl font-bold corporate-blue mb-2">CRE Deals (Future)</h4>
+                    <p class="text-3xl font-extrabold text-amber-500">03</p>
+                    <p class="text-sm text-gray-600">Planned/Advisory projects secured.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue">
+                    <h4 class="text-xl font-bold corporate-blue mb-2">Offices Nationwide</h4>
+                    <p class="text-3xl font-extrabold text-amber-500">02</p>
+                    <p class="text-sm text-gray-600">Kumasi HQ and Accra Liaison Office (Mock).</p>
+                </div>
+            </div>
+
+            <p class="text-center text-sm text-gray-500 mt-6 italic">
+                *Data displayed represents our professional benchmark and aspirational growth track. Office locations are mock placeholders for launch.
+            </p>
+        </div>
+    </section>
+
+    
+    <!-- 1.7. New AI Toolkit Section (MOCK DATA REMOVED FOR BREVITY) -->
+    <section id="toolkit" class="py-16 md:py-24 bg-gold-light border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-4 flex items-center justify-center">
+                <i class="ph-sparkle-fill text-amber-500 text-3xl mr-3"></i> PLC AI Toolkit
+            </h2>
+            <p class="text-lg text-gray-700 text-center mb-12">
+                Leverage our proprietary AI tools to enhance marketing, gain strategic insights, and build trust.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Tool 1: Sales Copy Generator (Automotive Focus) -->
+                <div class="bg-white p-5 rounded-xl card-shadow border-t-4 border-corporate-blue">
+                    <h3 class="text-lg font-semibold corporate-blue mb-3 flex items-center">
+                        <i class="ph-text-columns-fill mr-2 text-amber-500"></i> Sales Copy
+                    </h3>
+                    <p class="text-gray-600 text-xs mb-3">Generate premium, persuasive car listings.</p>
+                    <input type="text" id="sales-make" placeholder="Make (e.g., Toyota)" class="w-full p-2 mb-1 border border-gray-300 rounded-lg text-xs">
+                    <input type="text" id="sales-model" placeholder="Model (e.g., Corolla)" class="w-full p-2 mb-1 border border-gray-300 rounded-lg text-xs">
+                    <input type="text" id="sales-feature" placeholder="Key Feature (e.g., Low Mileage)" class="w-full p-2 mb-3 border border-gray-300 rounded-lg text-xs">
+                    <button onclick="generateSalesCopy()" class="w-full py-2 bg-amber-500 text-white font-medium rounded-lg hover:bg-amber-600 transition duration-300 text-sm">
+                        Generate Sales Copy ✨
+                    </button>
+                </div>
+
+                <!-- Tool 2: CRE Market Analysis (Future Focus) -->
+                <div class="bg-white p-5 rounded-xl card-shadow border-t-4 border-amber-500">
+                    <h3 class="text-lg font-semibold corporate-blue mb-3 flex items-center">
+                        <i class="ph-chart-bar-fill mr-2 text-corporate-blue"></i> CRE Analysis
+                    </h3>
+                    <p class="text-gray-600 text-xs mb-3">Get data-backed CRE investment summaries.</p>
+                    <textarea id="market-topic" placeholder="Topic (e.g., Retail trends in Accra)" rows="4" class="w-full p-2 mb-3 border border-gray-300 rounded-lg text-xs"></textarea>
+                    <button onclick="generateMarketSummary()" class="w-full py-2 bg-corporate-blue text-white font-medium rounded-lg hover:bg-opacity-90 transition duration-300 text-sm">
+                        Run Strategic Analysis 📈
+                    </button>
+                </div>
+
+                <!-- Tool 3: Professional Email Draft for Garages (NEW) -->
+                <div class="bg-white p-5 rounded-xl card-shadow border-t-4 border-corporate-blue">
+                    <h3 class="text-lg font-semibold corporate-blue mb-3 flex items-center">
+                        <i class="ph-envelope-simple-fill mr-2 text-amber-500"></i> Email Draft
+                    </h3>
+                    <p class="text-gray-600 text-xs mb-3">Draft professional emails for garage partnerships.</p>
+                    <select id="email-purpose" class="w-full p-2 mb-1 border border-gray-300 rounded-lg text-xs">
+                        <option value="partnership">Propose New Partnership Terms</option>
+                        <option value="quality">Address Quality Control Issue</option>
+                        <option value="followup">General Partnership Follow-up</option>
+                    </select>
+                    <textarea id="email-detail" placeholder="Key detail (e.g., 'Need 24-hr turnaround on diagnostics')" rows="2" class="w-full p-2 mb-3 border border-gray-300 rounded-lg text-xs"></textarea>
+                    <button onclick="generateEmailDraft()" class="w-full py-2 bg-amber-500 text-white font-medium rounded-lg hover:bg-amber-600 transition duration-300 text-sm">
+                        Draft Professional Email ✨
+                    </button>
+                </div>
+
+                <!-- Tool 4: Terms Sheet Outline (NEW) -->
+                <div class="bg-white p-5 rounded-xl card-shadow border-t-4 border-amber-500">
+                    <h3 class="text-lg font-semibold corporate-blue mb-3 flex items-center">
+                        <i class="ph-file-text-fill mr-2 text-corporate-blue"></i> Terms Sheet
+                    </h3>
+                    <p class="text-gray-600 text-xs mb-3">Generate a structured outline for legal/commercial terms.</p>
+                    <select id="terms-type" class="w-full p-2 mb-1 border border-gray-300 rounded-lg text-xs">
+                        <option value="garage">Garage Commission Agreement</option>
+                        <option value="vehicle">Vehicle Sales Terms to Client</option>
+                        <option value="cre_investor">CRE Investor NDA (Future)</option>
+                    </select>
+                    <textarea id="terms-detail" placeholder="Key Financial Points (e.g., 5% commission on sales)" rows="2" class="w-full p-2 mb-3 border border-gray-300 rounded-lg text-xs"></textarea>
+                    <button onclick="generateTermsOutline()" class="w-full py-2 bg-corporate-blue text-white font-medium rounded-lg hover:bg-opacity-90 transition duration-300 text-sm">
+                        Generate Terms Outline 📝
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Services Section -->
+    <section id="services" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Our Strategic Focus Areas</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                
+                <!-- Service Card 1: Automotive Intermediary (Current Focus) -->
+                <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-corporate-blue hover:shadow-xl transition duration-300">
+                    <i class="ph-car-profile-bold text-5xl corporate-blue mb-4"></i>
+                    <h3 class="text-2xl font-bold corporate-blue mb-4">Prime Automotive Logistics</h3>
+                    <p class="text-gray-600 mb-6">
+                        We currently specialize in **Automotive Intermediation**, linking car garage owners, mechanics, and direct buyers/sellers. We ensure transparent pricing, vet mechanical quality, and streamline client acquisition for our partners.
+                    </p>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="ph-check-circle-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
+                            **Client Acquisition:** Guaranteed, pre-qualified customer flow for garages.
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-check-circle-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
+                            **Quality Vetting:** Ensuring all services meet a professional standard before payment.
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-check-circle-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
+                            **Transparent Pricing:** Negotiating fair service and sale commissions (e.g., the 5% sale commission/minimum GHS 400 fee structure).
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 2: Commercial Real Estate (Future Expansion) -->
+                <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-amber-500 hover:shadow-xl transition duration-300">
+                    <i class="ph-building-office-bold text-5xl text-amber-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold corporate-blue mb-4">Future Commercial Brokerage</h3>
+                    <p class="text-gray-600 mb-6">
+                        Leveraging our logistics expertise and professional network, our long-term vision is to become a licensed broker for **Commercial Real Estate (CRE)**, specializing in strategic acquisitions and asset management.
+                    </p>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="ph-target-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
+                            **Strategic Focus:** Targeting industrial, retail, and office acquisitions across Ghana and West Africa.
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-chart-line-up-bold text-xl text-amber-500 mt-0.5 mr-2"></i>
+                            **Data-Driven Insights:** Applying modern analysis (PropTech/AI) to investment opportunities.
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-scale-bold text-xl text-amber-500 mt-0.5 mr-2"></i>
+                            **Regulatory Compliance:** Committing to the Real Estate Agency Act (REAC) and professional licensing standards.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Value Proposition (The PLC Standard) -->
+    <section id="process" class="py-16 md:py-24 bg-gold-light">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold corporate-blue mb-4">The Prime Links Corporate Standard</h2>
+            <p class="text-lg text-gray-700 mb-12">
+                We turn complexity into clarity. Our commitment is to a methodical, transparent process that delivers optimal results for every client and partner.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <!-- Pillar 1: Transparency -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-b-4 border-amber-500">
+                    <i class="ph-eye-bold text-4xl text-amber-500 mb-3"></i>
+                    <h3 class="text-xl font-semibold corporate-blue mb-2">Total Transparency</h3>
+                    <p class="text-gray-600 text-sm">
+                        Clear fee disclosures (like our GHS 400 minimum) and open communication. You always know what you're paying and why.
+                    </p>
+                </div>
+                <!-- Pillar 2: Vetting & Quality -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-b-4 border-amber-500">
+                    <i class="ph-shield-check-bold text-4xl text-amber-500 mb-3"></i>
+                    <h3 class="text-xl font-semibold corporate-blue mb-2">Ironclad Vetting</h3>
+                    <p class="text-gray-600 text-sm">
+                        Rigorous quality control on all partner garages and service providers to ensure long-term reliability for the client.
+                    </p>
+                </div>
+                <!-- Pillar 3: Future-Ready -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-b-4 border-amber-500">
+                    <i class="ph-rocket-launch-bold text-4xl text-amber-500 mb-3"></i>
+                    <h3 class="text-xl font-semibold corporate-blue mb-2">Future-Ready</h3>
+                    <p class="text-gray-600 text-sm">
+                        Leveraging technology and data to streamline transactions, ensuring maximum efficiency now and in our future CRE ventures.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. Contact Section -->
+    <section id="contact" class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Begin Your Prime Partnership</h2>
+            
+            <div class="bg-white p-8 md:p-10 rounded-xl card-shadow border border-gray-200">
+                <p class="text-center text-gray-700 mb-6">
+                    Ready to inquire about our automotive intermediary services or future commercial brokerage opportunities?
+                    Contact us using the details below.
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-around space-y-4 md:space-y-0 text-center md:text-left">
+                        
+                    <div class="flex flex-col items-center md:items-start">
+                        <i class="ph-phone-call-fill text-2xl text-amber-500 mb-1"></i>
+                        <span class="font-semibold corporate-blue">Call or WhatsApp</span>
+                        <a href="tel:+233509153671" class="text-gray-600 hover:text-corporate-blue transition">+233 (0) 509153671</a>
+                    </div>
+                    
+                    <div class="flex flex-col items-center md:items-start">
+                        <i class="ph-envelope-fill text-2xl text-amber-500 mb-1"></i>
+                        <span class="font-semibold corporate-blue">Email Us</span>
+                        <a href="mailto:contact@primelinkscorp.com" class="text-gray-600 hover:text-corporate-blue transition">contact@primelinkscorp.com</a>
+                    </div>
+
+                    <div class="flex flex-col items-center md:items-start">
+                        <i class="ph-map-pin-fill text-2xl text-amber-500 mb-1"></i>
+                        <span class="font-semibold corporate-blue">Headquarters</span>
+                        <p class="text-gray-600">Kumasi, Ashanti Region, Ghana</p>
+                    </div>
+                </div>
+                    
+                <hr class="border-gray-200 my-6">
+
+                <!-- Simple Message Form (Static for now) -->
+                <form onsubmit="showMessage('Thank you for your message! We will be in touch shortly.', 'info'); return false;" class="space-y-4">
+                    <input type="text" placeholder="Your Full Name" class="w-full p-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-amber-500 transition" required>
+                    <input type="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-amber-500 transition" required>
+                    <textarea placeholder="How can Prime Links Corporate assist you today?" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-amber-500 transition" required></textarea>
+                    <button type="submit" class="w-full py-3 bg-amber-500 text-white font-bold rounded-lg hover:bg-amber-600 transition duration-300 shadow-md">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-corporate-blue py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white text-opacity-80">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Prime Links Corporate PLC. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Connecting Quality Service, Logistics, and Commercial Investment across Africa.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <button id="chat-button" class="bg-corporate-blue text-amber-500 flex items-center justify-center">
+        <i class="ph-chat-circle-dots-fill text-3xl"></i>
+    </button>
+
+    <!-- Chatbot Container (retained) -->
+    <div id="chat-container" class="hidden">
+        <div class="chat-header p-3 flex justify-between items-center rounded-t-lg">
+            <h3 class="text-lg font-semibold flex items-center">
+                <i class="ph-robot-fill text-xl mr-2 text-amber-400"></i> PLC AI Assistant
+            </h3>
+            <button id="close-chat" class="text-white hover:text-gray-200">
+                <i class="ph-x-bold text-xl"></i>
+            </button>
+        </div>
+        <div id="chat-body" class="chat-body space-y-4">
+            <!-- Initial AI message -->
+            <div class="flex justify-start">
+                <div class="message-ai p-3 rounded-xl rounded-tl-sm shadow-md">
+                    <p class="font-semibold text-sm">Hello! I'm the PLC AI Assistant.</p>
+                    <p class="text-xs mt-1">Ask me about **Prime Links Corporate** or for expert advice on **starting a business/high-quality manufacturing and sourcing**.</p>
+                </div>
+            </div>
+            <!-- Messages go here -->
+        </div>
+        <div class="p-3 border-t border-gray-200">
+            <div id="loading-dots" class="text-center py-2 hidden">
+                <span class="loading-dot"></span>
+                <span class="loading-dot"></span>
+                <span class="loading-dot"></span>
+            </div>
+            <div id="messageBox" class="p-2 text-sm bg-red-100 text-red-700 rounded-md hidden mb-2"></div>
+
+            <div class="flex space-x-2">
+                <input type="text" id="user-input" placeholder="Type your question..." class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 transition" onkeydown="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" class="bg-amber-500 text-white p-3 rounded-lg hover:bg-amber-600 transition duration-300">
+                    <i class="ph-paper-plane-right-fill text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Custom Alert/Message Box (Replaces alert()) -->
+    <div id="status-message-box" class="fixed top-4 right-4 p-4 rounded-lg shadow-xl text-white transition-opacity duration-300 opacity-0 z-[1001]" style="min-width: 250px;"></div>
+
+
+    <script>
+        // --- LOGO DOWNLOAD FUNCTION ---
+        function downloadLogo() {
+            const svgElement = document.getElementById('plc-logo-svg');
+            
+            // Clone the SVG to remove website styling that might interfere with the download
+            const clonedSvg = svgElement.cloneNode(true);
+            
+            // Set explicit dimensions for a clean download file (e.g., 500x500 pixels for high quality)
+            clonedSvg.setAttribute('width', '500');
+            clonedSvg.setAttribute('height', '500');
+            clonedSvg.setAttribute('viewBox', '0 0 100 100'); // Ensure viewBox is set for correct scaling
+            
+            // Serialize the SVG DOM element to an XML string
+            const svgData = new XMLSerializer().serializeToString(clonedSvg);
+            const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            
+            // Create a temporary link element
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'PrimeLinks_Corporate_Logo.svg';
+            
+            // Programmatically click the link to trigger the download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Notify the user
+            showMessage('Logo download started! Check your downloads folder.', 'info');
+        }
+
+        // --- MODAL CONTROL FUNCTIONS ---
+        function showModal(title, type, isResult, content = '') {
+            const overlay = document.getElementById('ai-modal-overlay');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalLoading = document.getElementById('modal-loading');
+
+            modalTitle.textContent = title;
+            modalBody.innerHTML = content;
+
+            if (isResult) {
+                // Showing result
+                modalLoading.classList.add('hidden');
+                modalBody.classList.remove('hidden');
+            } else {
+                // Showing processing/loading
+                modalLoading.classList.remove('hidden');
+                modalBody.classList.add('hidden');
+            }
+
+            overlay.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('ai-modal-overlay').style.display = 'none';
+        }
+
+
+        // --- AI TOOLKIT FUNCTIONS ---
+
+        /**
+         * Tool 1: Sales Copy Generator (Non-Grounded)
+         */
+        async function generateSalesCopy() {
+            const make = document.getElementById('sales-make').value.trim();
+            const model = document.getElementById('sales-model').value.trim();
+            const feature = document.getElementById('sales-feature').value.trim();
+
+            if (!make || !model || !feature) {
+                showMessage("Please fill in all vehicle details to generate the copy.", 'error');
+                return;
+            }
+            
+            showModal('Generating Sales Copy...', 'info', false);
+
+            const prompt = `Generate a professional, benefit-driven sales listing description (max 200 words, using clear headings/paragraphs) for a used vehicle with the following details: Make: ${make}, Model: ${model}, Key Selling Feature: ${feature}. Highlight the vehicle's reliability and the premium, vetted nature of the offer delivered by Prime Links Corporate PLC.`;
+
+            const systemInstruction = `You are a premium Automotive Sales Copywriter for Prime Links Corporate PLC. Your tone must be formal, persuasive, and focused on value and reliability. Write a compelling description, including a professional headline. Do not use markdown for headings, use bolding and clear paragraphs.`;
+
+            try {
+                const response = await callGeminiAPI_Standalone(prompt, systemInstruction, false); // Non-grounded
+
+                // Format the output for the modal
+                const formattedText = response.text.replace(/\n\n/g, '<br><br>');
+
+                showModal('✨ Professional Sales Copy Generated', 'success', true, formattedText);
+            } catch (error) {
+                showModal('Error generating copy.', 'error', true, "An error occurred during AI generation. Please check your inputs.");
+                console.error("Sales Copy API Error:", error);
+            }
+        }
+
+        /**
+         * Tool 2: CRE Market Analysis (Grounded)
+         */
+        async function generateMarketSummary() {
+            const topic = document.getElementById('market-topic').value.trim();
+            if (!topic) {
+                showMessage("Please enter a market topic (e.g., 'warehouse pricing trends') to analyze.", 'error');
+                return;
+            }
+            
+            showModal('Analyzing Market Data...', 'info', false);
+
+            const prompt = `Provide a concise, professional market analysis (max 250 words) on the following topic for the West African/Ghanaian Commercial Real Estate (CRE) sector: ${topic}. Structure the response with clear key findings and a conclusion on investment viability.`;
+            
+            const systemInstruction = `You are a world-class Commercial Real Estate Market Analyst for Prime Links Corporate PLC. You MUST use Google Search grounding to provide data-driven insights. Your tone must be authoritative, data-centric, and focused on strategic investment decisions.`;
+
+            try {
+                const response = await callGeminiAPI_Standalone(prompt, systemInstruction, true); // Grounded
+                
+                // Formatting the grounded response, including sources in the modal
+                let sourcesHtml = '';
+                if (response.sources && response.sources.length > 0) {
+                    sourcesHtml = '<div class="mt-4 pt-2 border-t border-gray-200"><p class="font-semibold text-xs text-corporate-blue mb-1">Sources:</p>';
+                    response.sources.forEach(source => {
+                        sourcesHtml += `<a href="${source.uri}" target="_blank" class="source-link hover:underline block truncate" title="${source.title}">${source.title}</a>`;
+                    });
+                    sourcesHtml += '</div>';
+                }
+
+                const formattedText = response.text.replace(/\n\n/g, '<br><br>');
+                showModal('📈 Strategic Market Summary', 'success', true, formattedText + sourcesHtml);
+
+            } catch (error) {
+                showModal('Error running analysis.', 'error', true, "An error occurred during AI generation. Please check your query and try again.");
+                console.error("Market Analysis API Error:", error);
+            }
+        }
+
+        /**
+         * Tool 3: Professional Email Draft for Garages (NEW)
+         */
+        async function generateEmailDraft() {
+            const purpose = document.getElementById('email-purpose').value;
+            const detail = document.getElementById('email-detail').value.trim();
+
+            if (!detail) {
+                showMessage("Please provide the key detail for the email content.", 'error');
+                return;
+            }
+
+            showModal('Drafting Professional Email...', 'info', false);
+
+            let prompt;
+            let title;
+
+            if (purpose === 'partnership') {
+                title = 'New Partnership Proposal Draft';
+                prompt = `Draft a concise, professional email (max 150 words) to a Garage Owner (start with 'Dear Partner') from Prime Links Corporate PLC. The purpose is to propose a new partnership. The key point to include is: "${detail}". Emphasize mutual profit, quality control, and a steady client flow.`;
+            } else if (purpose === 'quality') {
+                title = 'Quality Control Follow-up Draft';
+                prompt = `Draft a firm but polite and highly professional email (max 150 words) to a Garage Owner (start with 'Dear Partner') regarding a Quality Control issue. State that a client reported a recurring fault. The specific issue is: "${detail}". Ask for a clear action plan and remind them of the Prime Links commitment to vetting quality.`;
+            } else { // followup
+                title = 'General Follow-up Draft';
+                prompt = `Draft a short, professional follow-up email (max 100 words) to a Garage Owner from Prime Links Corporate PLC. The purpose is general relationship maintenance. The key point to include is: "${detail}".`;
+            }
+
+            const systemInstruction = `You are the lead associate at Prime Links Corporate PLC. Your tone must be formal, respectful, and focused on maintaining a strong, professional business relationship while upholding the company's high standards. Do not include salutations or signatures in your response.`;
+
+            try {
+                const response = await callGeminiAPI_Standalone(prompt, systemInstruction, false);
+                
+                const formattedText = response.text.replace(/\n\n/g, '<br><br>').replace(/Dear Partner/i, 'Dear Partner,').replace(/Sincerely,/i, '<br><br>Sincerely,<br>Prime Links Corporate PLC');
+
+                showModal(title + ' ✨', 'success', true, formattedText);
+            } catch (error) {
+                showModal('Error drafting email.', 'error', true, "An error occurred during AI generation. Please check your inputs.");
+                console.error("Email Draft API Error:", error);
+            }
+        }
+
+        /**
+         * Tool 4: Terms Sheet Outline (NEW)
+         */
+        async function generateTermsOutline() {
+            const type = document.getElementById('terms-type').value;
+            const detail = document.getElementById('terms-detail').value.trim();
+
+            if (!detail) {
+                showMessage("Please provide key points for the terms sheet.", 'error');
+                return;
+            }
+
+            showModal('Generating Terms Sheet Outline...', 'info', false);
+
+            let prompt;
+            let title;
+
+            if (type === 'garage') {
+                title = 'Garage Commission Agreement Outline';
+                prompt = `Generate a structured, section-based outline for a formal Commission Agreement between Prime Links Corporate PLC and a partner garage. The key financial details are: "${detail}". Include sections for Definitions, Scope of Services, Financial Terms, Quality Standards (Vetting), Term & Termination, and Dispute Resolution.`;
+            } else if (type === 'vehicle') {
+                title = 'Vehicle Sales Terms Outline';
+                prompt = `Generate a structured outline for a Vehicle Sales Intermediary Terms Sheet provided to a client by Prime Links Corporate PLC. The key financial details are: "${detail}". Include sections for Fees, Vehicle Description, Payment Schedule, Commission Calculation, Client Responsibilities, and Warranty Disclaimer.`;
+            } else { // cre_investor
+                title = 'CRE Investor NDA Outline';
+                prompt = `Generate a structured outline for a Non-Disclosure Agreement (NDA) between Prime Links Corporate PLC and a Commercial Real Estate Investor. The key strategic details are: "${detail}". Include sections for Definitions, Obligations of Confidentiality, Exclusions, Term & Termination, and Remedies.`;
+            }
+
+            const systemInstruction = `You are a legal document structurer for Prime Links Corporate PLC. You must provide a clean, professional, numbered, and bulleted outline suitable for a formal legal document. Use clear, formal business language.`;
+
+            try {
+                const response = await callGeminiAPI_Standalone(prompt, systemInstruction, false);
+                
+                // Format the output by replacing all newlines with <br> for HTML rendering
+                const formattedText = response.text.replace(/\n/g, '<br>');
+
+                showModal(title + ' 📝', 'success', true, formattedText);
+            } catch (error) {
+                showModal('Error generating terms outline.', 'error', true, "An error occurred during AI generation. Please check your inputs.");
+                console.error("Terms Outline API Error:", error);
+            }
+        }
+
+
+        // --- Gemini API Configuration (Retained) ---
+        const MODEL_NAME = "gemini-2.5-flash-preview-05-20";
+        const apiKey = ""; 
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${apiKey}`;
+
+        // System instruction for the chat AI Agent
+        const SYSTEM_INSTRUCTION = `You are the AI Assistant for 'Prime Links Corporate PLC', a strategic brokerage and logistics firm based in Kumasi, Ghana, specializing in quality and transparency across Africa. 
+
+**Your Role:**
+1. **Internal Information:** When asked about the company (e.g., "What is Prime Links?", "What is your vision?", "Why the gold trim?"), use this internal knowledge: Prime Links Corporate is an intermediary that ensures vetted quality in automotive services and sales (initial focus) and plans to expand into commercial real estate (CRE) brokerage. Our core values are transparency, ironclad vetting, and professionalism, linking high-quality African businesses to global standards.
+2. **Sourcing/Business Advice:** When asked about starting a business, finding high-quality manufacturers (like Chinese manufacturers), or strategic partnerships, use **Google Search grounding** to provide relevant, expert, high-quality, and reliable advice. Focus on practical steps and quality control.
+3. **Tone:** Maintain a professional, knowledgeable, and helpful corporate tone. Keep answers concise.`;
+
+        // Chat history array to maintain context
+        let chatHistory = [];
+
+        // --- DOM Elements ---
+        const chatButton = document.getElementById('chat-button');
+        const chatContainer = document.getElementById('chat-container');
+        const closeChatButton = document.getElementById('close-chat');
+        const chatBody = document.getElementById('chat-body');
+        const userInput = document.getElementById('user-input');
+        const loadingDots = document.getElementById('loading-dots');
+        const statusMessageBox = document.getElementById('status-message-box');
+        
+        // --- Event Listeners ---
+        chatButton.addEventListener('click', () => {
+            chatContainer.classList.toggle('hidden');
+            if (!chatContainer.classList.contains('hidden')) {
+                userInput.focus();
+            }
+        });
+        closeChatButton.addEventListener('click', () => {
+            chatContainer.classList.add('hidden');
+        });
+
+
+        // Replaces alert()
+        function showMessage(message, type = 'error') {
+            statusMessageBox.textContent = message;
+            statusMessageBox.classList.remove('bg-red-600', 'bg-green-600', 'opacity-0', 'bg-blue-600');
+            statusMessageBox.classList.add('opacity-100');
+
+            if (type === 'error') {
+                statusMessageBox.classList.add('bg-red-600');
+            } else if (type === 'info') {
+                statusMessageBox.classList.add('bg-blue-600');
+            } else {
+                statusMessageBox.classList.add('bg-green-600');
+            }
+
+            setTimeout(() => {
+                statusMessageBox.classList.remove('opacity-100');
+                statusMessageBox.classList.add('opacity-0');
+            }, 4000);
+        }
+
+
+        // --- CHATBOT UTILITIES (Using chatHistory) ---
+
+        /**
+         * Appends a message to the chat body.
+         */
+        function appendMessage(text, sender, sources = []) {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+
+            const messageBubble = document.createElement('div');
+            messageBubble.className = `p-3 rounded-xl shadow-md my-2 text-sm ${sender === 'user' ? 'message-user rounded-br-sm' : 'message-ai rounded-tl-sm'}`;
+            messageBubble.style.whiteSpace = 'pre-wrap';
+            
+            messageBubble.innerHTML = formatAIResponse(text);
+
+            if (sources.length > 0) {
+                 const sourcesHtml = document.createElement('div');
+                 sourcesHtml.className = 'mt-2 pt-2 border-t border-gray-200';
+                 let sourceText = `<p class="font-semibold text-xs text-corporate-blue">Sourced Information:</p>`;
+                 sources.forEach(source => {
+                     sourceText += `<a href="${source.uri}" target="_blank" class="source-link hover:underline block truncate" title="${source.title}">${source.title}</a>`;
+                 });
+                 sourcesHtml.innerHTML = sourceText;
+                 messageBubble.appendChild(sourcesHtml);
+            }
+
+            messageWrapper.appendChild(messageBubble);
+            chatBody.appendChild(messageWrapper);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        /**
+         * Formats the AI response for better readability (handling markdown).
+         */
+        function formatAIResponse(text) {
+             // Simple markdown to HTML conversion for bold text
+             return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+
+        /**
+         * Sends the user message and calls the Gemini API (Chat).
+         */
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            userInput.value = '';
+            appendMessage(text, 'user');
+            chatHistory.push({ role: "user", parts: [{ text: text }] });
+
+            loadingDots.classList.remove('hidden');
+            userInput.disabled = true;
+
+            try {
+                const response = await callGeminiAPI_Chat(chatHistory);
+
+                if (response.error) {
+                    chatHistory.pop(); 
+                    throw new Error(response.error);
+                }
+
+                chatHistory.push({ role: "model", parts: [{ text: response.text }] });
+                appendMessage(response.text, 'ai', response.sources);
+
+            } catch (error) {
+                console.error("Chatbot API Error:", error);
+                appendMessage("I apologize, but I encountered a corporate connectivity issue. Please try your question again.", 'ai');
+            } finally {
+                loadingDots.classList.add('hidden');
+                userInput.disabled = false;
+                userInput.focus();
+            }
+        }
+
+        // --- STANDALONE API CALL FUNCTION (Shared by Toolkit) ---
+
+        /**
+         * Calls the Gemini API for standalone tools.
+         */
+        async function callGeminiAPI_Standalone(prompt, systemInstruction, useGrounding) {
+            const MAX_RETRIES = 3;
+            let attempt = 0;
+            
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] },
+                tools: useGrounding ? [{ "google_search": {} }] : []
+            };
+
+            while (attempt < MAX_RETRIES) {
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const text = candidate.content.parts[0].text;
+                        let sources = [];
+
+                        const groundingMetadata = candidate.groundingMetadata;
+                        if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                            sources = groundingMetadata.groundingAttributions
+                                .map(attribution => ({
+                                    uri: attribution.web?.uri,
+                                    title: attribution.web?.title,
+                                }))
+                                .filter(source => source.uri && source.title);
+                        }
+                        
+                        return { text, sources };
+                    } else {
+                        throw new Error("API response was valid but contained no generated text.");
+                    }
+
+                } catch (error) {
+                    attempt++;
+                    if (attempt >= MAX_RETRIES) {
+                        throw new Error(`Failed to connect to the API after ${MAX_RETRIES} attempts.`);
+                    }
+                    const delay = Math.pow(2, attempt) * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+            throw new Error("Generation failed.");
+        }
+
+        // Dedicated chat API call to maintain history integrity
+        async function callGeminiAPI_Chat(history) {
+            // Reuses logic from Standalone but uses history and specific system instruction for chat
+            const lastMessage = history[history.length - 1];
+            
+            const payload = {
+                contents: history,
+                systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+                tools: [{ "google_search": {} }]
+            };
+            
+            // Reuses the retry logic
+            const MAX_RETRIES = 3;
+            let attempt = 0;
+
+            while (attempt < MAX_RETRIES) {
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const text = candidate.content.parts[0].text;
+                        let sources = [];
+
+                        const groundingMetadata = candidate.groundingMetadata;
+                        if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                            sources = groundingMetadata.groundingAttributions
+                                .map(attribution => ({
+                                    uri: attribution.web?.uri,
+                                    title: attribution.web?.title,
+                                }))
+                                .filter(source => source.uri && source.title);
+                        }
+                        
+                        return { text, sources };
+                    } else {
+                        throw new Error("API response was valid but contained no generated text.");
+                    }
+
+                } catch (error) {
+                    attempt++;
+                    if (attempt >= MAX_RETRIES) {
+                        throw new Error(`Failed to connect to the API after ${MAX_RETRIES} attempts.`);
+                    }
+                    const delay = Math.pow(2, attempt) * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+            throw new Error("Chat generation failed.");
+        }
+
+
+        // --- OWNER ACCESS CONTROL ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const downloadBtn = document.getElementById('download-logo-btn');
+            
+            // Security Check: Hide/Show the Download Button
+            const SECRET_CODE = 'PLC2026!'; 
+            const teamCode = params.get('team_code');
+
+            if (teamCode === SECRET_CODE) {
+                downloadBtn.style.display = 'flex';
+                showMessage("Team Mode Activated: Logo Download is available.", 'info');
+            } else {
+                // Remove the button from the DOM completely for maximum security
+                downloadBtn.remove();
+            }
+        });
+    </script>
+</body>
+</html>
