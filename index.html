@@ -192,6 +192,23 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+        
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 49; /* Below fixed header elements */
+            border-top: 1px solid #eee;
+        }
+        /* Override display for mobile when active (handled by JS) */
+        .mobile-menu-active {
+            display: block !important;
+        }
     </style>
 </head>
 <body>
@@ -220,7 +237,7 @@
 
     <!-- Navigation Header -->
     <header class="header-bg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center relative">
             <!-- Logo Area -->
             <div class="flex items-center space-x-2">
                 <a href="#home" class="flex items-center space-x-2">
@@ -246,10 +263,21 @@
                 <a href="#contact" class="corporate-blue hover:text-gray-600 transition">Contact Us</a>
             </nav>
             
-            <!-- Mobile Menu Button (Placeholder) -->
-            <button class="md:hidden text-2xl corporate-blue">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl corporate-blue">
                 <i class="ph-list-bold"></i>
             </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden">
+            <nav class="flex flex-col space-y-2 p-4 text-sm font-medium">
+                <a href="#record" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Track Record</a>
+                <a href="#toolkit" class="corporate-blue hover:bg-gray-100 p-2 rounded block">AI Toolkit</a>
+                <a href="#services" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Our Services</a>
+                <a href="#process" class="corporate-blue hover:bg-gray-100 p-2 rounded block">The PLC Standard</a>
+                <a href="#contact" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Contact Us</a>
+            </nav>
         </div>
     </header>
 
@@ -859,6 +887,14 @@
         const statusMessageBox = document.getElementById('status-message-box');
         
         // --- Event Listeners ---
+        // FIX: The mobile menu event listener was missing a reference to the main button and the dropdown element.
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('mobile-menu-active');
+        });
+        // FIX: Re-attaching the chat button listener for robustness
         chatButton.addEventListener('click', () => {
             chatContainer.classList.toggle('hidden');
             if (!chatContainer.classList.contains('hidden')) {
