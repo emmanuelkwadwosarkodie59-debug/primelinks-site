@@ -209,6 +209,15 @@
         .mobile-menu-active {
             display: block !important;
         }
+        .portfolio-post {
+            min-height: 350px;
+        }
+        .post-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px 8px 0 0;
+        }
     </style>
 </head>
 <body>
@@ -257,9 +266,9 @@
             <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#record" class="corporate-blue hover:text-gray-600 transition">Track Record</a>
-                <a href="#toolkit" class="corporate-blue hover:text-gray-600 transition">AI Toolkit</a>
                 <a href="#services" class="corporate-blue hover:text-gray-600 transition">Our Services</a>
                 <a href="#process" class="corporate-blue hover:text-gray-600 transition">The PLC Standard</a>
+                <a href="#toolkit" class="corporate-blue hover:text-gray-600 transition">AI Toolkit</a>
                 <a href="#contact" class="corporate-blue hover:text-gray-600 transition">Contact Us</a>
             </nav>
             
@@ -272,11 +281,14 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="md:hidden">
             <nav class="flex flex-col space-y-2 p-4 text-sm font-medium">
+                <!-- NEW MENU LINKS BASED ON USER REQUESTS -->
                 <a href="#record" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Track Record</a>
-                <a href="#toolkit" class="corporate-blue hover:bg-gray-100 p-2 rounded block">AI Toolkit</a>
-                <a href="#services" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Our Services</a>
+                <a href="#auto-deals" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Automotive Deals</a>
+                <a href="#cre-deals" class="corporate-blue hover:bg-gray-100 p-2 rounded block">CRE Portfolio</a>
+                <a href="#logistics-deals" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Logistics Deals</a>
                 <a href="#process" class="corporate-blue hover:bg-gray-100 p-2 rounded block">The PLC Standard</a>
                 <a href="#contact" class="corporate-blue hover:bg-gray-100 p-2 rounded block">Contact Us</a>
+                <!-- AI Toolkit link moved out as it is a tool, not a section of information client seeks -->
             </nav>
         </div>
     </header>
@@ -310,24 +322,24 @@
             <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Global+Auto+Group" alt="Global Auto Group" class="h-10 mx-8">
             <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Accra+Logistics+Ptnrs" alt="Accra Logistics Ptnrs" class="h-10 mx-8">
             <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Kumasi+Industrials" alt="Kumasi Industrials" class="h-10 mx-8">
-            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=China+Sourcing+Hub" alt="China Sourcing Hub" class="h-10 mx-8">
-            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=West+Africa+Property+Fund" alt="West Africa Property Fund" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=China+Sourcing+Hub" alt="China Sourcing+Hub" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=West+Africa+Property+Fund" alt="West Africa Property+Fund" class="h-10 mx-8">
 
             <!-- Duplicate logos for seamless scrolling effect -->
             <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Global+Auto+Group" alt="Global Auto Group" class="h-10 mx-8">
             <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Accra+Logistics+Ptnrs" alt="Accra Logistics Ptnrs" class="h-10 mx-8">
             <img src="https://placehold.co/120x40/0A3D62/FFD700?text=Kumasi+Industrials" alt="Kumasi Industrials" class="h-10 mx-8">
-            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=China+Sourcing+Hub" alt="China Sourcing Hub" class="h-10 mx-8">
-            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=West+Africa+Property+Fund" alt="West Africa Property Fund" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=China+Sourcing+Hub" alt="China Sourcing+Hub" class="h-10 mx-8">
+            <img src="https://placehold.co/120x40/0A3D62/FFD700?text=West+Africa+Property+Fund" alt="West Africa Property+Fund" class="h-10 mx-8">
         </div>
     </div>
     
-    <!-- 1.6. New Track Record Section -->
+    <!-- 1.6. Track Record Section (Aggregated Stats) -->
     <section id="record" class="py-16 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Our Vetted Track Record & Credibility</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Our Vetted Track Record & Corporate Credibility</h2>
             
-            <!-- Statistics Row -->
+            <!-- Statistics Row (Total Deals Closed, Clients Served, Years, Rating) -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-center">
                 
                 <div class="p-4 rounded-xl border border-gray-200">
@@ -336,11 +348,11 @@
                 </div>
                 <div class="p-4 rounded-xl border border-gray-200">
                     <p class="text-4xl font-extrabold corporate-blue">250+</p>
-                    <p class="text-gray-600 font-medium mt-1">Total Deals Closed</p>
+                    <p class="text-gray-600 font-medium mt-1">Total Deals Closed (Client & PLC)</p>
                 </div>
                 <div class="p-4 rounded-xl border border-gray-200">
                     <p class="text-4xl font-extrabold text-amber-500">500+</p>
-                    <p class="text-gray-600 font-medium mt-1">Customers Served</p>
+                    <p class="text-gray-600 font-medium mt-1">Customers Served (Still Counting)</p>
                 </div>
                 <div class="p-4 rounded-xl border border-gray-200">
                     <p class="text-4xl font-extrabold corporate-blue">4.8/5</p>
@@ -348,33 +360,171 @@
                 </div>
             </div>
 
-            <!-- Portfolio Breakdown -->
+            <!-- Portfolio Summary and Offices Nationwide -->
             <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue">
-                    <h4 class="text-xl font-bold corporate-blue mb-2">Automotive Deals</h4>
-                    <p class="text-3xl font-extrabold text-amber-500">225</p>
-                    <p class="text-sm text-gray-600">Successful sales and service logistics closed.</p>
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue col-span-2">
+                    <h4 class="text-xl font-bold corporate-blue mb-2 flex items-center">
+                        <i class="ph-briefcase-fill mr-2 text-amber-500"></i> Portfolio Summary
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                        Total Deals Closed are split across our core strategic verticals: **Automotive (85%)**, **CRE (10% Advisory)**, and **Logistics/Sourcing (5%)**. We specialize in high-trust, complex transactions across all sectors.
+                    </p>
+                    <div class="mt-4 flex space-x-4">
+                        <span class="text-sm font-semibold corporate-blue">Biggest Brands Served:</span>
+                        <span class="text-sm text-gray-700">AfriGold Logistics, Kumasi Tech Hub, Global Parts Ltd. (Mock Data)</span>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue">
-                    <h4 class="text-xl font-bold corporate-blue mb-2">CRE Deals (Future)</h4>
-                    <p class="text-3xl font-extrabold text-amber-500">03</p>
-                    <p class="text-sm text-gray-600">Planned/Advisory projects secured.</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-corporate-blue">
-                    <h4 class="text-xl font-bold corporate-blue mb-2">Offices Nationwide</h4>
+
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-amber-500">
+                    <h4 class="text-xl font-bold corporate-blue mb-2 flex items-center">
+                        <i class="ph-map-pin-fill mr-2 text-corporate-blue"></i> Offices Nationwide
+                    </h4>
                     <p class="text-3xl font-extrabold text-amber-500">02</p>
                     <p class="text-sm text-gray-600">Kumasi HQ and Accra Liaison Office (Mock).</p>
                 </div>
             </div>
-
+            
             <p class="text-center text-sm text-gray-500 mt-6 italic">
                 *Data displayed represents our professional benchmark and aspirational growth track. Office locations are mock placeholders for launch.
             </p>
         </div>
     </section>
 
+    <!-- 1.7. Automotive Deals Portfolio (New Section) -->
+    <section id="auto-deals" class="py-16 md:py-24 bg-gold-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-4 flex items-center justify-center">
+                <i class="ph-car-profile-fill text-3xl mr-3 text-amber-500"></i> Prime Automotive Deals Closed
+            </h2>
+            <p class="text-lg text-gray-700 text-center mb-12">
+                Showcasing successful sales, verified vehicle sourcing, and complex logistics projects managed by Prime Links.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Post 1: Car for Sale/Closed -->
+                <div class="bg-white rounded-xl card-shadow portfolio-post">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/0A3D62/FFD700?text=VETTED+SEDAN+-+SOLD');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">2022 Toyota Corolla S (Vetted)</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Vetted Sale & Registration<br>**Status:** Closed successfully<br>**Enquiries:** Client required full pre-purchase inspection and service history verification.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Deal Value: GHS 180,000 | 14 Deals Closed (Automotive)</p>
+                    </div>
+                </div>
+                <!-- Post 2: Complex Repair Logistics -->
+                <div class="bg-white rounded-xl card-shadow portfolio-post">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/FFD700/0A3D62?text=COMPLEX+ENGINE+LOGISTICS');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Mercedes Sprinter Engine Overhaul</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Logistics & Parts Sourcing<br>**Status:** Closed and running perfectly<br>**Enquiries:** Sourced specialist parts from Germany/Dubai and managed the 12-day repair schedule at partner garage.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Deal Value: GHS 45,000 | 38 Deals Closed (Logistics)</p>
+                    </div>
+                </div>
+                 <!-- Post 3: Open Listing/Video Post Placeholder -->
+                <div class="bg-white rounded-xl card-shadow portfolio-post">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/0A3D62/FFD700?text=OPEN+LISTING+-+VIDEO');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Nissan Qashqai 2018 (Open Sale)</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Commissioned Intermediation<br>**Status:** Available for viewing/sale<br>**Enquiries:** View the full inspection video and service records via the link below. Low mileage, perfect Accra commuter.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Deal Value: GHS 120,000 | Contact Us Now</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-8 italic">
+                *(To update this section, replace the placeholder images and descriptions in the 'auto-deals' section of the HTML file.)*
+            </p>
+        </div>
+    </section>
+
+    <!-- 1.8. CRE Deals Portfolio (New Section) -->
+    <section id="cre-deals" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-4 flex items-center justify-center">
+                <i class="ph-building-office-fill text-3xl mr-3 text-corporate-blue"></i> Commercial Real Estate Portfolio
+            </h2>
+            <p class="text-lg text-gray-700 text-center mb-12">
+                Showcasing future investment strategy and advisory projects in the Commercial Real Estate sector.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6">
+                 <!-- Post 1: Warehouse Advisory -->
+                <div class="bg-gray-50 rounded-xl card-shadow portfolio-post border-t-4 border-amber-500">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/FFD700/0A3D62?text=INDUSTRIAL+WAREHOUSE+ACQUIRED');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Industrial Warehouse Acquisition</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Buyer Acquisition Advisory<br>**Status:** Finalized Q3 2024<br>**Enquiries:** 5,000 sq. meter logistics hub secured in Tema Free Zones Enclave for international freight partner. Strategic investment planning included.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Asset Value: GHS 15M | 01 CRE Deal Closed</p>
+                    </div>
+                </div>
+                <!-- Post 2: Retail Center Feasibility Study -->
+                <div class="bg-gray-50 rounded-xl card-shadow portfolio-post border-t-4 border-amber-500">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/0A3D62/FFD700?text=RETAIL+CENTER+FEASIBILITY');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Central Kumasi Retail Feasibility</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Market Analysis & Consulting<br>**Status:** Ongoing Advisory<br>**Enquiries:** Analyzing tenant mix, foot traffic data, and zoning requirements for a new-build shopping center in the CBD.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Consulting Project | Contact Us for Analysis</p>
+                    </div>
+                </div>
+                 <!-- Post 3: Office Space Leasing -->
+                <div class="bg-gray-50 rounded-xl card-shadow portfolio-post border-t-4 border-amber-500">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/FFD700/0A3D62?text=OFFICE+LEASING+VIDEO+TOUR');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Premium Office Leasing (Video Tour)</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Exclusive Leasing Mandate<br>**Status:** Fully Leased Q4 2024<br>**Enquiries:** Secured long-term tenants for 8-floor Grade A office space. Used virtual tours and AI-backed tenant profiling.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Total Area: 12,000 sqm | 02 CRE Deals Closed</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-8 italic">
+                *(To update this section, replace the placeholder images and descriptions in the 'cre-deals' section of the HTML file.)*
+            </p>
+        </div>
+    </section>
     
-    <!-- 1.7. New AI Toolkit Section (MOCK DATA REMOVED FOR BREVITY) -->
+    <!-- 1.9. Logistics & Sourcing Deals Portfolio (New Section) -->
+    <section id="logistics-deals" class="py-16 md:py-24 bg-gold-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-4 flex items-center justify-center">
+                <i class="ph-globe-stand-fill text-3xl mr-3 text-corporate-blue"></i> Global Logistics & Sourcing Deals
+            </h2>
+            <p class="text-lg text-gray-700 text-center mb-12">
+                Our trusted intermediary role in connecting high-quality international manufacturers to African buyers.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6">
+                 <!-- Post 1: China Sourcing -->
+                <div class="bg-white rounded-xl card-shadow portfolio-post border-t-4 border-corporate-blue">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/0A3D62/FFD700?text=CHINESE+MANUFACTURING+PARTNER');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">High-Grade Tile Sourcing (China)</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Manufacturer Vetting & Supply Chain<br>**Status:** Ongoing Supply Contract<br>**Enquiries:** Secured an exclusive, high-volume supply contract for a major Ghanaian distributor, ensuring QC checks prior to shipping.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Total Contract Value: $500K+ | 04 Deals Closed</p>
+                    </div>
+                </div>
+                <!-- Post 2: Equipment Import -->
+                <div class="bg-white rounded-xl card-shadow portfolio-post border-t-4 border-corporate-blue">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/FFD700/0A3D62?text=HEAVY+EQUIPMENT+IMPORT');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Construction Equipment Import</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Equipment Importation & Clearance<br>**Status:** Delivered and deployed<br>**Enquiries:** Managed end-to-end process for a specialized excavator, including customs clearance and final delivery in Takoradi.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Logistical Fee: GHS 30,000 | 02 Deals Closed</p>
+                    </div>
+                </div>
+                 <!-- Post 3: Industrial Parts Sourcing -->
+                <div class="bg-white rounded-xl card-shadow portfolio-post border-t-4 border-corporate-blue">
+                    <div class="post-image" style="background-image: url('https://placehold.co/600x400/0A3D62/FFD700?text=INDUSTRIAL+SPARES+DELIVERED');"></div>
+                    <div class="p-5">
+                        <h4 class="text-xl font-bold corporate-blue mb-2">Industrial Pump Spares (Ongoing)</h4>
+                        <p class="text-sm text-gray-600 mb-3">**Deal Type:** Specialty Sourcing (India)<br>**Status:** 6-Month Rolling Contract<br>**Enquiries:** Providing verified sourcing of specialized industrial pump components from a reputable manufacturer in India.</p>
+                        <p class="text-xs text-amber-500 font-semibold">Ongoing Contract | Contact Us for Sourcing</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-8 italic">
+                *(To update this section, replace the placeholder images and descriptions in the 'logistics-deals' section of the HTML file.)*
+            </p>
+        </div>
+    </section>
+
+    
+    <!-- 1.7. AI Toolkit Section (Unchanged) -->
     <section id="toolkit" class="py-16 md:py-24 bg-gold-light border-t border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-4 flex items-center justify-center">
@@ -450,10 +600,10 @@
         </div>
     </section>
 
-    <!-- 2. Services Section -->
+    <!-- 2. Services Section (Retained for Service Overlap) -->
     <section id="services" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Our Strategic Focus Areas</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center corporate-blue mb-12">Our Core Service Offerings</h2>
             
             <div class="grid md:grid-cols-2 gap-10">
                 
@@ -462,20 +612,20 @@
                     <i class="ph-car-profile-bold text-5xl corporate-blue mb-4"></i>
                     <h3 class="text-2xl font-bold corporate-blue mb-4">Prime Automotive Logistics</h3>
                     <p class="text-gray-600 mb-6">
-                        We currently specialize in **Automotive Intermediation**, linking car garage owners, mechanics, and direct buyers/sellers. We ensure transparent pricing, vet mechanical quality, and streamline client acquisition for our partners.
+                        We specialize in transparent and efficient **Automotive Intermediation**, managing the entire process from vehicle vetting and part sourcing to final sale and registration.
                     </p>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start">
                             <i class="ph-check-circle-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
-                            **Client Acquisition:** Guaranteed, pre-qualified customer flow for garages.
+                            **Client Acquisition:** Guaranteed, pre-qualified customer flow for partner garages.
                         </li>
                         <li class="flex items-start">
                             <i class="ph-check-circle-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
-                            **Quality Vetting:** Ensuring all services meet a professional standard before payment.
+                            **Quality Vetting:** Ensuring all services meet a professional, reliable standard.
                         </li>
                         <li class="flex items-start">
                             <i class="ph-check-circle-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
-                            **Transparent Pricing:** Negotiating fair service and sale commissions (e.g., the 5% sale commission/minimum GHS 400 fee structure).
+                            **Transparent Pricing:** Clear commission and minimum fee disclosure on every deal.
                         </li>
                     </ul>
                 </div>
@@ -485,20 +635,20 @@
                     <i class="ph-building-office-bold text-5xl text-amber-500 mb-4"></i>
                     <h3 class="text-2xl font-bold corporate-blue mb-4">Future Commercial Brokerage</h3>
                     <p class="text-gray-600 mb-6">
-                        Leveraging our logistics expertise and professional network, our long-term vision is to become a licensed broker for **Commercial Real Estate (CRE)**, specializing in strategic acquisitions and asset management.
+                        Leveraging our logistics expertise, our long-term goal is to become a licensed broker for **Commercial Real Estate (CRE)**, focused on strategic acquisition and high-value asset management.
                     </p>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start">
                             <i class="ph-target-fill text-xl text-amber-500 mt-0.5 mr-2"></i>
-                            **Strategic Focus:** Targeting industrial, retail, and office acquisitions across Ghana and West Africa.
+                            **Strategic Focus:** Targeting industrial, retail, and office acquisition across West Africa.
                         </li>
                         <li class="flex items-start">
                             <i class="ph-chart-line-up-bold text-xl text-amber-500 mt-0.5 mr-2"></i>
-                            **Data-Driven Insights:** Applying modern analysis (PropTech/AI) to investment opportunities.
+                            **Data-Driven Insights:** Applying modern PropTech/AI analysis to investment opportunities.
                         </li>
                         <li class="flex items-start">
                             <i class="ph-scale-bold text-xl text-amber-500 mt-0.5 mr-2"></i>
-                            **Regulatory Compliance:** Committing to the Real Estate Agency Act (REAC) and professional licensing standards.
+                            **Regulatory Compliance:** Committing to the Real Estate Agency Act (REAC) standards.
                         </li>
                     </ul>
                 </div>
